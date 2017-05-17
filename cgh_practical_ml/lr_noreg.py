@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.metrics import r2_score
 from sklearn.datasets import load_svmlight_file
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import LinearRegression
 from train.build_model import *
 
 x, y = load_svmlight_file('data/reg_big.data')
@@ -13,9 +13,8 @@ ytr = y[tri]
 xte = x[tei]
 yte = y[tei]
 
-alp = 0.1
 
-m = Ridge(alpha=alp)
+m = LinearRegression()
 m.fit(xtr, ytr)
 r2_train = r2_score(ytr, m.predict(xtr))
 r2_test = r2_score(yte, m.predict(xte))
