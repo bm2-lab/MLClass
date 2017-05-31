@@ -12,4 +12,4 @@ xte, yte = mnist_test.next_batch(50)
 
 xe = xte[2]
 ye = yte[2]
-show_mnist_fig('t1', xe, ye)
+show_mnist_fig('t2', xe, ye)

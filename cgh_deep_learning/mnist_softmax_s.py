@@ -33,7 +33,7 @@ train_op = tf.train.GradientDescentOptimizer(learning_rate=eta).minimize(cross_e
 
 batch_size = 50
 batch_per_epoch = mnist_train.num_examples // batch_size
-epoch = 2
+epoch = 10
 
 summary = tf.summary.merge_all()
 with tf.Session() as sess:
@@ -48,8 +48,8 @@ with tf.Session() as sess:
             xtr, ytr = mnist_train.next_batch(batch_size)
             i = sp + ep * batch_per_epoch + 1
             loss_value, summary_value, _ = sess.run([cross_entropy, summary, train_op], feed_dict={x_pl: xtr, y_pl: ytr})
-            train_writer.add_summary(summary_value, i)
             if sp == 0 or (sp + 1) % 100 == 0:
+                train_writer.add_summary(summary_value, i)
                 print(f'Loss: {loss_value:.4f}')
         acc = sess.run(accuracy, feed_dict=val_fd)
         print(f'Validation Acc: {acc:.4f}')

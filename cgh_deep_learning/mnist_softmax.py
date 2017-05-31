@@ -1,8 +1,6 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
-tf.random_seed.set_random_seed(1337)
-
 mnist = input_data.read_data_sets('data', one_hot=True)
 mnist_train = mnist.train
 mnist_val = mnist.validation
@@ -23,7 +21,8 @@ correct_prediction = tf.equal(tf.argmax(y_pl, 1), tf.argmax(y_, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
 eta = 0.1
-train_op = tf.train.GradientDescentOptimizer(learning_rate=eta).minimize(cross_entropy)
+# train_op = tf.train.GradientDescentOptimizer(learning_rate=eta).minimize(cross_entropy)
+train_op = tf.train.AdagradOptimizer(learning_rate=eta).minimize(cross_entropy)
 
 batch_size = 50
 batch_per_epoch = mnist_train.num_examples // batch_size
