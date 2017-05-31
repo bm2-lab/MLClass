@@ -4,6 +4,8 @@ from sklearn.datasets import load_svmlight_file
 from sklearn.linear_model import Ridge
 from train.build_model import *
 
+np.random.seed(1337)
+
 x, y = load_svmlight_file('data/reg_big.data')
 x = np.asarray(x.todense())
 
@@ -13,7 +15,7 @@ ytr = y[tri]
 xte = x[tei]
 yte = y[tei]
 
-alp = 0.1
+alp = 1000
 
 m = Ridge(alpha=alp)
 m.fit(xtr, ytr)

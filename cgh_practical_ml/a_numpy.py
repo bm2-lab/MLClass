@@ -2,7 +2,9 @@ import numpy as np
 
 
 # basic operation
-a = np.array([1,2,3,4])
+a = np.array([1,2,3,4], dtype=np.float32)
+b = np.arange(9, dtype=np.float32).reshape((3,3))
+c = np.arange(27, dtype=np.float32).reshape((3,3,3))
 
 
 # linalg

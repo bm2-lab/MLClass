@@ -6,4 +6,17 @@ x = np.linspace(-10, 10, 100)
 y = scs.expit(x)
 
 plt.plot(x, y)
-plt.show()
+plt.savefig('k.pdf')
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,12 @@
-from sklearn.externals import joblib
+import numpy as np
+from sklearn.datasets import load_svmlight_file
 
-xtr, ytr, xte, yte = joblib.load('data/clsdata.pkl')
+x, y = load_svmlight_file('data/reg_big.data')
+x = np.asarray(x.todense())
+
+
+
+
+
 
 

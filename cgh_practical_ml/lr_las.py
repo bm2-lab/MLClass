@@ -4,6 +4,9 @@ from sklearn.datasets import load_svmlight_file
 from sklearn.linear_model import Lasso
 from train.build_model import *
 
+np.random.seed(1337)
+
+
 x, y = load_svmlight_file('data/reg_big.data')
 x = np.asarray(x.todense())
 

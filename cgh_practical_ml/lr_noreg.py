@@ -4,6 +4,8 @@ from sklearn.datasets import load_svmlight_file
 from sklearn.linear_model import LinearRegression
 from train.build_model import *
 
+np.random.seed(1337)
+
 x, y = load_svmlight_file('data/reg_big.data')
 x = np.asarray(x.todense())
 
@@ -13,12 +15,15 @@ ytr = y[tri]
 xte = x[tei]
 yte = y[tei]
 
+# ilst = split_kfold_r(y)
 
 m = LinearRegression()
 m.fit(xtr, ytr)
 r2_train = r2_score(ytr, m.predict(xtr))
 r2_test = r2_score(yte, m.predict(xte))
-
+#
 print('Traing R2 Score: {0}'.format(np.round(r2_train, 5)))
 print('Testing R2 Score: {0}'.format(np.round(r2_test, 5)))
+
+
 
